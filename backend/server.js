@@ -25,7 +25,6 @@ app.use(cookieParser());
 app.use(express.json({ limit: "10mb" }));
 app.use(cookieParser());
 
-import cors from "cors";
 
 app.use(
   cors({
