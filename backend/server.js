@@ -28,10 +28,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://mern-ecommerce-frontend-rho-murex.vercel.app",
-    ],
+    origin: "https://mern-ecommerce-frontend-rho-murex.vercel.app",
     credentials: true,
   })
 );
