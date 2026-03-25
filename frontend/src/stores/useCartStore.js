@@ -36,11 +36,17 @@ export const useCartStore = create((set, get) => ({
 	getCartItems: async () => {
 		try {
 			const res = await axios.get("/cart");
-			set({ cart: res.data });
+
+			if (Array.isArray(res.data)) {
+				set({ cart: res.data });
+			} else {
+				console.error("Cart is not array:", res.data);
+				set({ cart: [] });
+			}
 			get().calculateTotals();
 		} catch (error) {
 			set({ cart: [] });
-			toast.error(error.response.data.message || "An error occurred");
+			toast.error(error.response?.data?.message || "Error fetching cart");
 		}
 	},
 	clearCart: async () => {
