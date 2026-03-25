@@ -1,3 +1,4 @@
+import cors from "cors";
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
@@ -21,7 +22,18 @@ const __dirname = path.resolve();
 
 app.use(express.json({ limit: "10mb" })); // allows you to parse the body of the request
 app.use(cookieParser());
+app.use(express.json({ limit: "10mb" }));
+app.use(cookieParser());
 
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://mern-ecommerce-frontend-683o.onrender.com",
+    ],
+    credentials: true,
+  })
+);
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
