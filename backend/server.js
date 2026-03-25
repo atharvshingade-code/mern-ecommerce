@@ -37,7 +37,7 @@ if (process.env.NODE_ENV === "production") {
 	});
 }
 console.log("MONGO_URI:", process.env.MONGO_URI);
+
 app.listen(PORT, () => {
-	console.log("Server is running on http://localhost:" + PORT);
-	connectDB();
+  console.log(`Server running on port ${PORT}`);
 });
